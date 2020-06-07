@@ -70,4 +70,26 @@ class GoodsTest extends Specification {
       nextDay.getQuality() == 0;
   }
 
+  def "the quality can't smaller than 0"() {
+    given:
+      def normalGoods = new Goods(2, 0, GoodsType.NORMAL);
+
+    when:
+      Goods nextDay = normalGoods.calculateNextDayQuality();
+
+    then:
+      nextDay.getQuality() == 0;
+  }
+
+  def "the quality can't bigger than 50"() {
+    given:
+      def normalGoods = new Goods(2, 50, GoodsType.BACKSTAGE_PASS);
+
+    when:
+      Goods nextDay = normalGoods.calculateNextDayQuality();
+
+    then:
+      nextDay.getQuality() == 50;
+  }
+
 }

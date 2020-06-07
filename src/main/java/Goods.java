@@ -29,7 +29,17 @@ public class Goods {
 
     this.sellIn -= 1;
     this.quality -= depreciate;
+    validate();
     return this;
+  }
+
+  private void validate() {
+    if (this.quality > 50) {
+      this.quality = 50;
+    }
+    if (this.quality < 0) {
+      this.quality = 0;
+    }
   }
 
   private Integer calculatePassDepreciate() {
