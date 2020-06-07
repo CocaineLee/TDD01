@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="GoodsTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-06-07T10:20:18" hostname="CNchenze.li" time="0.066">
+  <properties/>
+  <testcase name="we can calculate next day quality" classname="GoodsTest" time="0.066"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
