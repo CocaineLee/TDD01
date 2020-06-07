@@ -16,13 +16,37 @@ public class Goods {
     return quality;
   }
 
-  public Goods next() {
-    Integer depreciate = 1;
-    if (this.sellIn <= 0) {
-      depreciate *= 2;
+  public Goods calculateNextDayQuality() {
+    Integer depreciate;
+    switch (this.goodsType) {
+      case NORMAL:
+        depreciate = calculateNormalDepreciate();
+        break;
+      default:
+        depreciate = calculatePassDepreciate();
+        break;
     }
+
     this.sellIn -= 1;
     this.quality -= depreciate;
     return this;
+  }
+
+  private Integer calculatePassDepreciate() {
+    Integer depreciate = -1;
+    if (this.sellIn <= 10 && this.sellIn >5) {
+      depreciate = -2;
+    }
+    else if (this.sellIn <= 5 && this.sellIn > 0) {
+      depreciate = -3;
+    } else if (this.sellIn <= 0) {
+      depreciate = this.quality;
+    }
+    return depreciate;
+  }
+
+  private Integer calculateNormalDepreciate() {
+    Integer depreciate = 1;
+    return this.sellIn > 0? depreciate: 2*depreciate;
   }
 }
