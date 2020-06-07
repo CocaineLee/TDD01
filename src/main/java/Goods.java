@@ -17,8 +17,12 @@ public class Goods {
   }
 
   public Goods next() {
+    Integer depreciate = 1;
+    if (this.sellIn <= 0) {
+      depreciate *= 2;
+    }
     this.sellIn -= 1;
-    this.quality = this.quality - 1;
+    this.quality -= depreciate;
     return this;
   }
 }
